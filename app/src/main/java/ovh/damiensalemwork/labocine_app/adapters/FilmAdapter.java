@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ovh.damiensalemwork.labocine_app.R;
@@ -18,7 +19,7 @@ public class FilmAdapter extends BaseAdapter {
     private LayoutInflater inflater;
     private Context context;
     
-    public FilmAdapter(Context context,List<Film> items){
+    public FilmAdapter(Context context, ArrayList<Film> items){
         this.items=items;
         this.context=context;
         this.inflater=LayoutInflater.from(context);
@@ -42,12 +43,10 @@ public class FilmAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         view=inflater.inflate(R.layout.film_item,null);
-        TextView tvId=view.findViewById(R.id.tv_film_item1);
         TextView tvTitle=view.findViewById(R.id.tv_film_item2);
         TextView tvReal=view.findViewById(R.id.tv_film_item3);
         TextView tvAn=view.findViewById(R.id.tv_film_item4);
         Film currentItem= getItem(i);
-        tvId.setText("ID: "+currentItem.getId());
         tvTitle.setText("Title: "+currentItem.getTitle());
         tvReal.setText("Realisateur: "+currentItem.getRealisateur());
         tvAn.setText("Annee de sortie: "+currentItem.getAnnee());

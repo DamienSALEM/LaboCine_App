@@ -17,7 +17,7 @@ import ovh.damiensalemwork.labocine_app.models.Film;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG ="MainActivity";
     private ListView listView;
-    private ArrayList<Object> films;
+    private ArrayList<Film> films;
    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +59,6 @@ public class MainActivity extends AppCompatActivity {
                 2003));
         films.add(new Film(20,"La Strategie Ender", "Gavin Hood", 2013));
         
-        
+        listView.setAdapter(new FilmAdapter(this,films));
         }
     }
