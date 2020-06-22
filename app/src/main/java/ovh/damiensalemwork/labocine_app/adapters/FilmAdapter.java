@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
@@ -20,7 +21,9 @@ public class FilmAdapter extends BaseAdapter {
     private Context context;
     
     public FilmAdapter(Context context, ArrayList<Film> items){
-        this.items=items;
+        
+        this.items=new ArrayList<>();
+        this.items.addAll(items);
         this.context=context;
         this.inflater=LayoutInflater.from(context);
     }
@@ -47,9 +50,14 @@ public class FilmAdapter extends BaseAdapter {
         TextView tvReal=view.findViewById(R.id.tv_film_item3);
         TextView tvAn=view.findViewById(R.id.tv_film_item4);
         Film currentItem= getItem(i);
-        tvTitle.setText("Title: "+currentItem.getTitle());
+        tvTitle.setText("Titre: "+currentItem.getTitle());
         tvReal.setText("Realisateur: "+currentItem.getRealisateur());
         tvAn.setText("Annee de sortie: "+currentItem.getAnnee());
         return view;
+    }
+    public void update(ArrayList<Film> films){
+        this.items.clear();
+        this.items.addAll(films);
+        this.notifyDataSetChanged();
     }
 }

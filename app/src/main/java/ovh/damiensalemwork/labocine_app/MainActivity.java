@@ -17,15 +17,22 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 
 import ovh.damiensalemwork.labocine_app.adapters.FilmAdapter;
 import ovh.damiensalemwork.labocine_app.models.Film;
+import ovh.damiensalemwork.labocine_app.tools.Sortbyannee;
+import ovh.damiensalemwork.labocine_app.tools.Sortbyreal;
+import ovh.damiensalemwork.labocine_app.tools.Sortbytitle;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG ="MainActivity";
     private ListView listView;
     private ArrayList<Film> films;
     private Context context;
+    private FilmAdapter filmAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +74,8 @@ public class MainActivity extends AppCompatActivity {
         films.add(new Film(20,"La Strategie Ender", "Gavin Hood", 2013));
         
         
-        listView.setAdapter(new FilmAdapter(this,films));
+        filmAdapter=new FilmAdapter(this,films);
+        listView.setAdapter(filmAdapter);
         
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -84,4 +92,30 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         }
+    
+    public void TriTitleBtn(View view) {
+        
+        Collections.sort(films,new Sortbytitle());
+        for (int i=0;i<films.size();i++){
+            Log.d(TAG,films.get(i).getTitle());
+        }
+        filmAdapter.update(films);
+    }
+    
+    public void TriAnneeBtn(View view) {
+       
+        Collections.sort(films,new Sortbyannee());
+        for (int i=0;i<films.size();i++){
+            Log.d(TAG,films.get(i).getTitle());
+        }
+        filmAdapter.update(films);
+    }
+    
+    public void TriRealBtn(View view) {
+        Collections.sort(films,new Sortbyreal());
+        for (int i=0;i<films.size();i++){
+            Log.d(TAG,films.get(i).getTitle());
+        }
+        filmAdapter.update(films);
+    }
 }

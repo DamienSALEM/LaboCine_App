@@ -33,7 +33,7 @@ public class DetailsActivity extends AppCompatActivity {
         film_title=getIntent().getStringExtra("titre");
         Log.d(TAG,"Titre= "+film_title);
         Title=findViewById(R.id.tv_title);
-        Title.setText("Titre: "+film_title);
+        Title.setText(film_title);
     
         //Real:
         String film_real=getIntent().getStringExtra("real");
