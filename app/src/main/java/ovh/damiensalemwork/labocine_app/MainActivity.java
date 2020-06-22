@@ -2,8 +2,15 @@ package ovh.damiensalemwork.labocine_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG ="MainActivity";
     private ListView listView;
     private ArrayList<Film> films;
-   
+    private Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +66,22 @@ public class MainActivity extends AppCompatActivity {
                 2003));
         films.add(new Film(20,"La Strategie Ender", "Gavin Hood", 2013));
         
+        
         listView.setAdapter(new FilmAdapter(this,films));
+        
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
+                 Film object= (Film) listView.getItemAtPosition(position);
+                Log.d(TAG,""+object.getTitle());
+                Intent intent =new Intent(getApplicationContext(),DetailsActivity.class);
+                intent.putExtra("titre",""+object.getTitle());
+                intent.putExtra("real",""+object.getRealisateur());
+                intent.putExtra("annee",object.getAnnee());
+                intent.putExtra("id",object.getId());
+                startActivity(intent);
+                finish();
+            }
+        });
         }
-    }
+}

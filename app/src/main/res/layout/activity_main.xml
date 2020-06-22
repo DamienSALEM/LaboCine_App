@@ -36,5 +36,6 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/cl_main"
         android:background="@color/colorAccent"
+
         />
 </RelativeLayout>
