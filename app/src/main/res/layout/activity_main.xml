@@ -11,12 +11,19 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         >
-
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:src="@drawable/labocine"
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:ignore="MissingConstraints" />
         <TextView
             android:id="@+id/tv_main_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/App_title"
+            android:textColor="@color/White"
             android:textSize="40sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -27,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/tv_main_title">
+            app:layout_constraintTop_toBottomOf="@+id/logo">
             <Button
                 android:id="@+id/Btn_tri_annee"
                 android:layout_width="wrap_content"
@@ -65,5 +72,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/cl_main"
+        android:background="@color/ModeNuit"
+        android:textColor="@color/White"
         />
 </RelativeLayout>

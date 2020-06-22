@@ -1,11 +1,13 @@
 package ovh.damiensalemwork.labocine_app.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -49,7 +51,13 @@ public class FilmAdapter extends BaseAdapter {
         TextView tvTitle=view.findViewById(R.id.tv_film_item2);
         TextView tvReal=view.findViewById(R.id.tv_film_item3);
         TextView tvAn=view.findViewById(R.id.tv_film_item4);
+        ImageView ivfilm=view.findViewById(R.id.img_film);
         Film currentItem= getItem(i);
+        String str_id=String.valueOf(currentItem.getId());
+        int resourceId = context.getResources().getIdentifier("film"+str_id, "drawable", context.getPackageName());
+        Log.d(TAG,""+resourceId);
+        ivfilm.setImageResource(resourceId);
+        
         tvTitle.setText("Titre: "+currentItem.getTitle());
         tvReal.setText("Realisateur: "+currentItem.getRealisateur());
         tvAn.setText("Annee de sortie: "+currentItem.getAnnee());

@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/ModeNuit"
+    android:textColor="@color/White"
     tools:context=".DetailsActivity">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_main"
@@ -11,12 +13,19 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         >
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:src="@drawable/labocine"
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:ignore="MissingConstraints" />
         <TextView
             android:id="@+id/tv_main_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/App_title"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/White"
             android:textSize="40sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
